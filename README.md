@@ -26,11 +26,6 @@ end
 
 Now run this generator to create a migration:
 
-
-    # Capitalizing your model is very important, otherwise the generator
-    # will think you're trying to use a custom table name and you'll be a
-    # very, very sad panda. (see the section below for more info on that)
-
     $ rails generate eav_migration Product.tech_specs
 
     # or (depending on your mood)
@@ -115,9 +110,7 @@ class Widget < ActiveRecord::Base
 end
 ```
 
-Just remember to run the appropriate migration generator:
-
-    rails generate eav_migration bar_foo
+Just remember to edit the table name in the migration!
 
 What's the catch?
 -
