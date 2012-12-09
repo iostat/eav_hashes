@@ -19,11 +19,8 @@ module ActiveRecord
         # The entries are lazy-loaded, so don't do anything if they haven't been accessed or modified
         return unless (@entries and @changes_made)
 
-
         @entries.values.each do |entry|
           if entry.value.nil?
-            p "is nil"
-            p entry.value
             entry.delete
           else
             set_entry_owner(entry) if @is_new_owner
