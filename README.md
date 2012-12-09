@@ -18,11 +18,11 @@ How does it work?
 -
 Great question! Lets dive in with a simple code example:
 
-    ```ruby
-    class Product < ActiveRecord::Base
-        eav_hash_for :tech_specs
-    end
-    ```
+```ruby
+class Product < ActiveRecord::Base
+    eav_hash_for :tech_specs
+end
+```
     
 Now run this generator to create a migration:
 
@@ -43,31 +43,31 @@ And run the migration:
     
 Now watch the magic the happen:
 
-    ```ruby
-    # Assuming this whole example is on a blank DB, of course
-    a_product = Product.new
-    a_product.tech_specs["Widget Power"] = "1.21 GW"
-    a_product.tech_specs["Battery Life (hours)"] = 12
-    a_product.tech_specs["Warranty (years)"] = 3.5
-    a_product.tech_specs["RoHS Compliant"] = true
-    a_product.save!
+```ruby
+# Assuming this whole example is on a blank DB, of course
+a_product = Product.new
+a_product.tech_specs["Widget Power"] = "1.21 GW"
+a_product.tech_specs["Battery Life (hours)"] = 12
+a_product.tech_specs["Warranty (years)"] = 3.5
+a_product.tech_specs["RoHS Compliant"] = true
+a_product.save!
 
-    # Setting a value to nil deletes the entry
-    a_product.tech_specs["Warranty (years)"] = nil
-    a_product.save!
+# Setting a value to nil deletes the entry
+a_product.tech_specs["Warranty (years)"] = nil
+a_product.save!
 
-    the_same_product = Product.first
-    puts the_same_product.tech_specs["nonexistant key"]
-    puts "Entry Count: #{ProductTechSpecsEntry.count}"
-    the_same_product.tech_specs.each_pair do |key, value|
-        puts "#{key}: #{value.to_s}"
-    end
+the_same_product = Product.first
+puts the_same_product.tech_specs["nonexistant key"]
+puts "Entry Count: #{ProductTechSpecsEntry.count}"
+the_same_product.tech_specs.each_pair do |key, value|
+    puts "#{key}: #{value.to_s}"
+end
 
-    # Ruby's default types: Integer, Float, Complex, Rational, Symbol,
-    # TrueClass, and FalseClass are preserved between transactions like
-    # you would expect them to.
-    puts the_same_product.tech_specs["Battery Life (hours)"]+3
-    ```
+# Ruby's default types: Integer, Float, Complex, Rational, Symbol,
+# TrueClass, and FalseClass are preserved between transactions like
+# you would expect them to.
+puts the_same_product.tech_specs["Battery Life (hours)"]+3
+```
 
 And the output, as you can expect, will be along the lines of:
 
@@ -85,9 +85,9 @@ happens when you call `save!`.
 Now you could start doing other cool stuff, like searching for products based
 on their tech specs! You've already figured out how to do this, haven't you?
 
-    ```ruby
-    flux_capacitor = ShopProduct.find_by_tech_specs("Widget Power", "1.21 GW")
-    ```
+```ruby
+flux_capacitor = ShopProduct.find_by_tech_specs("Widget Power", "1.21 GW")
+```
 
 Nifty, right?
 
@@ -103,17 +103,17 @@ What if I want to change the table name?
 --
 By default, `eav_hash` uses a table name derived from the following:
 
-    ```ruby
-    "<ClassName>_<hash_name>".tableize
-    ```
+```ruby
+"<ClassName>_<hash_name>".tableize
+```
 
 You can change this by passing a symbol to the `:table_name` argument:
 
-    ```ruby
-    class Widget < ActiveRecord::Base
-        eav_hash_for :foobar, table_name: :bar_foo
-    end
-    ```
+```ruby
+class Widget < ActiveRecord::Base
+    eav_hash_for :foobar, table_name: :bar_foo
+end
+```
     
 Just remember to run the appropriate migration generator:
 
