@@ -38,7 +38,7 @@ module ActiveRecord
         raise "Key must be a string or a symbol!" unless key.is_a?(String) or key.is_a?(Symbol)
         load_entries_if_needed
         return @entries[key].value if @entries[key]
-        return nil
+        nil
       end
 
       # Sets the value of the EAV attribute `key` to `value`
@@ -64,7 +64,7 @@ module ActiveRecord
           raise "You can't shovel something that's not a Hash or EavHash here!"
         end
 
-        return self
+        self
       end
 
       # Gets the raw hash containing EavEntries by their keys
@@ -93,6 +93,11 @@ module ActiveRecord
       # Emulates Hash.each
       def each (&block)
         as_hash.each block
+      end
+
+      # Emulates Hash.each_pair (same as each)
+      def each_pair (&block)
+        each &block
       end
 
       # Empties the hash by setting all the values to nil
