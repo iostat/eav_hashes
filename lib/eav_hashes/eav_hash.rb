@@ -10,8 +10,6 @@ module ActiveRecord
         Util::sanity_check options
         @owner = owner
         @options = options
-
-        @is_new_owner = owner.id.nil?
       end
 
       # Saves any modified entries and deletes any which have been nil'd to save DB space
@@ -23,7 +21,7 @@ module ActiveRecord
           if entry.value.nil?
             entry.delete
           else
-            set_entry_owner(entry) if @is_new_owner
+            set_entry_owner(entry)
             entry.save
           end
         end
