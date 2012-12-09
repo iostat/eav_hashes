@@ -9,10 +9,10 @@ handled for you.
 Why would I need it?
 -
 Rails' ActiveRecord includes a helper function, `serialize`, to allow you to
-save complex data types into your database. Unfortunately, it isn't very
-useful. A lot of overhead is created from serialization/deserialization, and
-you can't search by the contents of your hash. That's where `eav_hashes` comes
-in.
+save complex data types (like hashes) into your database. Unfortunately, it
+isn't very useful. A lot of overhead is created from serialization and
+deserialization, and you can't search by the contents of your hash. That's
+where `eav_hashes` comes in.
 
 How does it work?
 -
@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
     eav_hash_for :tech_specs
 end
 ```
-    
+
 Now run this generator to create a migration:
 
 
@@ -36,11 +36,11 @@ Now run this generator to create a migration:
     # or (depending on your mood)
 
     $ rails generate eav_migration Product#tech_specs
-    
+
 And run the migration:
 
     $ rake db:migrate
-    
+
 Now watch the magic the happen:
 
 ```ruby
@@ -114,7 +114,7 @@ class Widget < ActiveRecord::Base
     eav_hash_for :foobar, table_name: :bar_foo
 end
 ```
-    
+
 Just remember to run the appropriate migration generator:
 
     rails generate eav_migration bar_foo
