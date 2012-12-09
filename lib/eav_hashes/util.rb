@@ -53,6 +53,37 @@ module ActiveRecord
 
         return klass
       end
+
+      # Searches an EavEntry's table for the specified key/value pair and returns an
+      # array containing the IDs of the models whose eav_hash key/value pair.
+      # You should not run this directly.
+      # @param [String, Symbol] key the key to search by
+      # @param [Object] value the value to search by. if this is nil, it will return all models which contain `key`
+      # @param [Hash] options the options hash which eav_hash_for hash generated.
+      def self.run_find_expression (key, value, options)
+        sanity_check options
+        raise "Can't search for a nil key!" if key.nil?
+        if value.nil?
+          options[:entry_class].where(
+              "entry_key = ? and symbol_key = ?",
+              key.to_s,
+              key.is_a?(Symbol)
+          ).pluck("#{options[:parent_assoc_name]}_id".to_sym)
+        else
+          val_type = EavEntry.get_value_type value
+          if val_type == EavEntry::SUPPORTED_TYPES[:Object]
+            raise "Can't search by Objects/Hashes/Arrays!"
+          else
+            options[:entry_class].where(
+                "entry_key = ? and symbol_key = ? and value = ? and value_type = ?",
+                key.to_s,
+                key.is_a?(Symbol),
+                value.to_s,
+                val_type
+            ).pluck("#{options[:parent_assoc_name]}_id".to_sym)
+          end
+        end
+      end
     end
   end
 end

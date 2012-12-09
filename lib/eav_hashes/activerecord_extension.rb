@@ -26,6 +26,10 @@ module ActiveRecord
           def save_#{hash_name}
             @#{hash_name}.save_entries if @#{hash_name}
           end
+
+          def self.find_by_#{hash_name} (key, value=nil)
+            self.find (ActiveRecord::EavHashes::Util::run_find_expression(key, value, @@#{hash_name}_hash_options))
+          end
         END_EVAL
       end
     end
