@@ -86,7 +86,7 @@ Now you could start doing other cool stuff, like searching for products based
 on their tech specs! You've already figured out how to do this, haven't you?
 
 ```ruby
-flux_capacitor = ShopProduct.find_by_tech_specs("Widget Power", "1.21 GW")
+flux_capacitor = Product.find_by_tech_specs("Widget Power", "1.21 GW")
 ```
 
 Nifty, right?
