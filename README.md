@@ -111,7 +111,7 @@ end
 Just remember to edit the table name in the migration, or use the following
 migration generator:
 
-    $ rails generator eav_migration Widget foobar bar_foo
+    $ rails generate eav_migration Widget foobar bar_foo
 
 
 What's the catch?
