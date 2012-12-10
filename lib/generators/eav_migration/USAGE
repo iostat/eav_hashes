@@ -1,0 +1,26 @@
+Description:
+    Creates a DB migration to generate the schema for a table which is used to
+    store the entries of an eav_hash.
+
+Example:
+    If you're not setting a custom table name, i.e., your model looks like this:
+
+        class ModelName < ActiveRecord::Base
+            eav_hash_for :hash_name
+        end
+
+    Then simply run this migration like so:
+
+        rails generate eav_migration ModelName hash_name
+
+    However, if you're a wizard and have specified a custom table name like this:
+
+        class ModelName < ActiveRecord::Base
+            eav_hash_for :hash_name, :table_name => :custom_table
+        end
+
+    Then run this generator like this:
+
+        rails generate eav_migration ModelName hash_name custom_table
+
+    Easy as pie!

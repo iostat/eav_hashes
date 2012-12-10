@@ -28,11 +28,7 @@ end
 
 Now run this generator to create a migration:
 
-    $ rails generate eav_migration Product.tech_specs
-
-    # or (depending on your mood)
-
-    $ rails generate eav_migration Product#tech_specs
+    $ rails generate eav_migration Product tech_specs
 
 And run the migration:
 
@@ -69,7 +65,7 @@ puts the_same_product.tech_specs["Battery Life (hours)"]+3
 And the output, as you can expect, will be along the lines of:
 
     nil
-    3
+    Entry Count: 3
     Widget Power: 1.21 GW
     Battery Life (hours): 12
     RoHS Compliant: true
@@ -112,7 +108,11 @@ class Widget < ActiveRecord::Base
 end
 ```
 
-Just remember to edit the table name in the migration!
+Just remember to edit the table name in the migration, or use the following
+migration generator:
+
+    $ rails generator eav_migration Widget foobar bar_foo
+
 
 What's the catch?
 -

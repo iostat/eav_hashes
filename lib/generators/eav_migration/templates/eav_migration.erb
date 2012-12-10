@@ -1,0 +1,16 @@
+class <%= migration_name %> < ActiveRecord::Migration
+  def change
+    create_table :<%= table_name %> do |t|
+      t.references :<%= model_name.underscore %>, :null => false
+      t.string :entry_key, :null => false
+      t.text :value, :null => false
+      t.integer :value_type, :null => false
+      t.boolean :symbol_key, :null => false, :default => true
+
+      t.timestamps
+    end
+
+    add_index :<%= table_name %>, :<%= model_name.underscore %>_id
+    add_index :<%= table_name %>, :entry_key
+  end
+end
