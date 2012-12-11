@@ -51,6 +51,9 @@ a_product.save!
 
 the_same_product = Product.first
 puts the_same_product.tech_specs["nonexistant key"]
+
+# magic alert: this actually gets the count of EVERY entry of every
+# hash for this model, but for this example this works
 puts "Entry Count: #{ProductTechSpecsEntry.count}"
 the_same_product.tech_specs.each_pair do |key, value|
     puts "#{key}: #{value.to_s}"
