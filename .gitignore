@@ -2,9 +2,9 @@
 .idea/
 log/*.log
 pkg/
-test/dummy/db/*.sqlite3
-test/dummy/db/schema.rb
-test/dummy/log/*.log
-test/dummy/tmp/
-test/dummy/.sass-cache
+spec/dummy/db/*.sqlite3
+spec/dummy/db/schema.rb
+spec/dummy/log/*.log
+spec/dummy/tmp/
+spec/dummy/.sass-cache
 Gemfile.lock
