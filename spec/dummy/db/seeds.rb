@@ -17,3 +17,5 @@ p2.name = "Product 2"
 
 p.save
 p2.save
+
+puts "Seeded the database."
