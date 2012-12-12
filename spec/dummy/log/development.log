@@ -1,0 +1,157 @@
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+   (1.0ms)  select sqlite_version(*)
+   (78.0ms)  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+   (135.0ms)  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+   (1.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateProducts (20121206133059)
+   (0.0ms)  begin transaction
+   (1.0ms)  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+   (0.0ms)  INSERT INTO "schema_migrations" ("version") VALUES ('20121206133059')
+   (105.0ms)  commit transaction
+Migrating to CreateProductTechSpecs (20121206133248)
+   (0.0ms)  begin transaction
+   (1.0ms)  CREATE TABLE "product_tech_specs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer NOT NULL, "entry_key" varchar(255) NOT NULL, "value" text NOT NULL, "value_type" integer NOT NULL, "symbol_key" boolean DEFAULT 't' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+   (0.0ms)  CREATE INDEX "index_product_tech_specs_on_product_id_and_entry_key" ON "product_tech_specs" ("product_id", "entry_key")
+   (0.0ms)  INSERT INTO "schema_migrations" ("version") VALUES ('20121206133248')
+   (102.0ms)  commit transaction
+   (0.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+SQLite3::SQLException: no such column: false: SELECT product_id FROM "product_tech_specs"  WHERE (entry_key = 'symbolic_key' and symbol_key = 't' and false = 'This key is SYMBOLIC!!!!!1!!')
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+   (0.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateProducts (20121206133059)
+Migrating to CreateProductTechSpecs (20121210055854)
+   (0.0ms)  select sqlite_version(*)
+   (0.0ms)  begin transaction
+   (0.0ms)  CREATE TABLE "product_tech_specs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer NOT NULL, "entry_key" varchar(255) NOT NULL, "value" text NOT NULL, "value_type" integer NOT NULL, "symbol_key" boolean DEFAULT 't' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+SQLite3::SQLException: table "product_tech_specs" already exists: CREATE TABLE "product_tech_specs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer NOT NULL, "entry_key" varchar(255) NOT NULL, "value" text NOT NULL, "value_type" integer NOT NULL, "symbol_key" boolean DEFAULT 't' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+   (0.0ms)  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+   (0.0ms)  select sqlite_version(*)
+   (81.0ms)  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+   (74.0ms)  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+   (1.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateProducts (20121206133059)
+   (0.0ms)  begin transaction
+   (1.0ms)  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+   (0.0ms)  INSERT INTO "schema_migrations" ("version") VALUES ('20121206133059')
+   (76.0ms)  commit transaction
+Migrating to CreateProductTechSpecs (20121210055854)
+   (0.0ms)  begin transaction
+   (1.0ms)  CREATE TABLE "product_tech_specs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer NOT NULL, "entry_key" varchar(255) NOT NULL, "value" text NOT NULL, "value_type" integer NOT NULL, "symbol_key" boolean DEFAULT 't' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+   (0.0ms)  CREATE INDEX "index_product_tech_specs_on_product_id" ON "product_tech_specs" ("product_id")
+   (0.0ms)  CREATE INDEX "index_product_tech_specs_on_entry_key" ON "product_tech_specs" ("entry_key")
+   (0.0ms)  INSERT INTO "schema_migrations" ("version") VALUES ('20121210055854')
+   (169.0ms)  commit transaction
+   (0.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+   (0.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+   (1.0ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+   (0.0ms)  begin transaction
+  SQL (3.0ms)  INSERT INTO "products" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["name", "Product 1"], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Complex"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "3.141592653589793+42i"], ["value_type", 4]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Float"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "3.141592653589793"], ["value_type", 3]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Number"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "42"], ["value_type", 2]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Rational"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "884279719003555/281474976710656"], ["value_type", 5]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Symbol"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "symbol"], ["value_type", 1]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "False"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "false"], ["value_type", 6]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "True"], ["product_id", 1], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "true"], ["value_type", 6]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "symbolic_key"], ["product_id", 1], ["symbol_key", true], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "This key is SYMBOLIC!!!!!1!!"], ["value_type", 0]]
+   (89.0ms)  commit transaction
+   (0.0ms)  begin transaction
+  SQL (1.0ms)  INSERT INTO "products" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["name", "Product 2"], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00]]
+  SQL (1.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Complex"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "3.141592653589793+42i"], ["value_type", 4]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Float"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "3.141592653589793"], ["value_type", 3]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Number"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "42"], ["value_type", 2]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Rational"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "884279719003555/281474976710656"], ["value_type", 5]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "A Symbol"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "symbol"], ["value_type", 1]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "False"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "false"], ["value_type", 6]]
+  SQL (1.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "True"], ["product_id", 2], ["symbol_key", false], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "true"], ["value_type", 6]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "symbolic_key"], ["product_id", 2], ["symbol_key", true], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "This key is SYMBOLIC!!!!!1!!"], ["value_type", 0]]
+  SQL (0.0ms)  INSERT INTO "product_tech_specs" ("created_at", "entry_key", "product_id", "symbol_key", "updated_at", "value", "value_type") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["entry_key", "only_in_product_2"], ["product_id", 2], ["symbol_key", true], ["updated_at", Mon, 10 Dec 2012 06:35:30 UTC +00:00], ["value", "mustard_pimp"], ["value_type", 1]]
+   (225.0ms)  commit transaction
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from create_eav_table_class at (eval):2)

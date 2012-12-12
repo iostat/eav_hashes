@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
     model and create a migration. All the heavy lifting is done for you.
   END_DESC
 
-  s.files = Dir["lib/**/*"] + ["init.rb", "MIT-LICENSE", "Rakefile", "README.md"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["lib/**/*"] + %w(init.rb MIT-LICENSE Rakefile README.md)
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2.7"
   s.add_development_dependency "sqlite3"

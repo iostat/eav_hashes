@@ -8,6 +8,9 @@ gemspec
 group :development, :test do
   # jquery-rails is used by the dummy application
   gem "jquery-rails"
+
+  # cause Test::Unit is for squares
+  gem "rspec-rails"
 end
 
 # Declare any dependencies that are still in development here instead of in

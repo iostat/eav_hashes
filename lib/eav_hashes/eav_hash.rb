@@ -159,7 +159,7 @@ module ActiveRecord
 
       # Sets an entry's owner ID. This is called when we save attributes for a model which has just been
       # created and not committed to the DB prior to having its EAV hash(es) modified
-      # @param [EavEntry] the entry
+      # @param [EavEntry] entry the entry whose owner to change
       def set_entry_owner(entry)
         entry.send "#{@options[:parent_assoc_name]}_id=", @owner.id
       end
