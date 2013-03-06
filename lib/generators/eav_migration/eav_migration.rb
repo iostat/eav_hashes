@@ -15,7 +15,7 @@ class EavMigrationGenerator < ActiveRecord::Generators::Base
   end
 
   def migration_file_name
-    "create_#{name}_#{hash_name}".underscore
+    "create_" + table_name
   end
 
   def migration_name
@@ -23,10 +23,14 @@ class EavMigrationGenerator < ActiveRecord::Generators::Base
   end
 
   def table_name
-    custom_table_name || "#{name}_#{hash_name}".underscore
+    custom_table_name || "#{name}_#{hash_name}".underscore.gsub(/\//, '_')
   end
 
   def model_name
-   name
+    name
+  end
+
+  def model_association_name
+    model_name.underscore.gsub(/\//,'_')
   end
 end

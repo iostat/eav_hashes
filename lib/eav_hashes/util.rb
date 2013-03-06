@@ -18,7 +18,7 @@ module ActiveRecord
 
         # Strip "_entries" from the table name
         if /Entry$/.match options[:entry_class_name]
-          options[:table_name] ||= options[:entry_class_name].to_s[0..-7].tableize.to_sym
+          options[:table_name] ||= options[:entry_class_name].to_s.tableize.slice(0..-9).to_sym
         else
           options[:table_name] ||= options[:entry_class_name].to_s.tableize.to_sym
         end
@@ -28,6 +28,12 @@ module ActiveRecord
 
         # Create the symbol name for the "has_many" association in the parent model
         options[:entry_assoc_name] = options[:entry_class_name].to_s.tableize.to_sym
+
+        # Change slashes to underscores in options to match what's output by the generator
+        # TODO: Refactor table naming into one location
+        options[:table_name] = options[:table_name].to_s.gsub(/\//,'_').to_sym
+        options[:parent_assoc_name] = options[:parent_assoc_name].to_s.gsub(/\//,'_').to_sym
+        options[:entry_assoc_name] = options[:entry_assoc_name].to_s.gsub(/\//,'_').to_sym
 
         # Create our custom type if it doesn't exist already
         options[:entry_class] = create_eav_table_class options
@@ -40,15 +46,15 @@ module ActiveRecord
         sanity_check options
 
         # Don't overwrite an existing type
-        return Object.const_get options[:entry_class_name] if Object.const_defined? options[:entry_class_name]
+        return class_from_string(options[:entry_class_name].to_s) if class_from_string_exists?(options[:entry_class_name])
 
         # Create our type
-        klass = Object.const_set options[:entry_class_name], Class.new(ActiveRecord::EavHashes::EavEntry)
+        klass = set_constant_from_string options[:entry_class_name].to_s, Class.new(ActiveRecord::EavHashes::EavEntry)
 
         # Fill in the associations and specify the table it belongs to
         klass.class_eval <<-END_EVAL
-          belongs_to :#{options[:parent_assoc_name]}
           self.table_name = "#{options[:table_name]}"
+          belongs_to :#{options[:parent_assoc_name]}
         END_EVAL
 
         return klass
@@ -83,6 +89,33 @@ module ActiveRecord
             ).pluck("#{options[:parent_assoc_name]}_id".to_sym)
           end
         end
+      end
+
+      # Find a class even if it's contained in one or more modules.
+      # See http://stackoverflow.com/questions/3163641/get-a-class-by-name-in-ruby
+      def self.class_from_string(str)
+        str.split('::').inject(Object) do |mod, class_name|
+          mod.const_get(class_name)
+        end
+      end
+
+      # Check whether a class exists, even if it's contained in one or more modules.
+      def self.class_from_string_exists?(str)
+        begin
+          class_from_string(str)
+        rescue
+          return false
+        end
+        true
+      end
+
+      # Set a constant from a string, even if the string contains modules. Modules
+      # are created if necessary.
+      def self.set_constant_from_string(str, val)
+        parent = str.deconstantize.split('::').inject(Object) do |mod, class_name|
+          mod.const_defined?(class_name) ? mod.const_get(class_name) : mod.const_set(class_name, Module.new())
+        end
+        parent.const_set(str.demodulize.to_sym, val)
       end
     end
   end
