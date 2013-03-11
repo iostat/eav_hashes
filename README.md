@@ -128,7 +128,7 @@ from the sheer awesomeness! Check out the LICENSE file for more information.
 
 Special Thanks!
 -
-Thanks to Matt Kimmel (@mattkimmel) for adding support for models contained in namespaces.
+Thanks to [Matt Kimmel](https://github.com/mattkimmel) for adding support for models contained in namespaces.
 
 I found a bug or want to contribute!
 -
