@@ -9,7 +9,6 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
-require 'rails/test_help'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -20,7 +19,7 @@ require File.expand_path("../dummy/db/seeds.rb",  __FILE__)
 RSpec.configure do |config|
   require 'rspec/expectations'
 
-  config.formatter = :documentation
+  #config.formatter = :documentation
   config.use_transactional_fixtures = true
   config.include RSpec::Matchers
 end
