@@ -23,29 +23,52 @@ def setup(env="bench")
     Rails.backtrace_cleaner.remove_silencers!
 end
 
-def generate_fixtures(n)
-    fixtures = []
-    keys = []
-
-    30.times do
-        keys << Faker::Company.name
+def generate_fixture_keys(n=35)
+    ret = []
+    n.times do
+        ret << Faker::Company.name
     end
 
-    n.times do |x|
-        p = Product.new
-        p.name = Faker::Name.name
+    ret
+end
 
-        keys.sample(rand(15) + 5).each do |key|
-            p.tech_specs[key] = [Faker::Company.bs, [rand(), rand(500000)].sample].sample
+def generate_fixture(keys)
+    p = Product.new
+    p.name = Faker::Name.name
+
+    keys.sample(rand(15) + 5).each do |key|
+        p.tech_specs[key] = [Faker::Company.bs, [rand(), rand(500000)].sample].sample
+    end
+
+    return p
+end
+
+# needles = # of search targets
+# haystack_size = # of entries for each search target
+# 250 needles @ 4000 haystack_size = 1M entries
+def create_benchmark(needles, haystack_size)
+    ret = []
+    keys = generate_fixture_keys()
+    cnt = 0
+
+    needles.times do
+        curr_haystack = []
+        ActiveRecord::Base.transaction do
+            haystack_size.times do 
+                p = generate_fixture(keys)
+                p.save!
+                curr_haystack << p
+            end
         end
+        ret << SearchTarget.new(curr_haystack.sample())
 
-        fixtures << p
-
-        print "\rGenerated #{x} fixtures."
+        cnt += 1
+        print "\rGenerated #{cnt} needles"
     end
+
     puts
 
-    fixtures
+    ret
 end
 
 def save_fixtures(fixtures)
@@ -61,10 +84,7 @@ def save_fixtures(fixtures)
 end
 
 setup()
-fixtures = generate_fixtures(10000)
-save_fixtures(fixtures)
-
-needles = fixtures.sample(15).collect { |p| SearchTarget.new(p) }
+needles = create_benchmark(250, 4000)
 
 Benchmark.bmbm do |bm|
     needles.each do |needle|
