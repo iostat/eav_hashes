@@ -28,3 +28,7 @@ require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
+
+task :bench do 
+  require "./bench/bench_helper.rb"
+end
