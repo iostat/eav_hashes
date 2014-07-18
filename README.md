@@ -144,4 +144,4 @@ Thanks to [Matt Kimmel](https://github.com/mattkimmel) for adding support for mo
 I found a bug or want to contribute!
 -
 You're probably reading this from GitHub, so you know what to do. If not, the
-Github project is at https://github.com/200proof/eav_hashes
+Github project is at https://github.com/iostat/eav_hashes
