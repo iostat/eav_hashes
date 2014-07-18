@@ -1,7 +1,7 @@
 eav_hashes
 =========
 
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/200proof/eav_hashes) [![Build Status](https://travis-ci.org/200proof/eav_hashes.png?branch=master)](https://travis-ci.org/200proof/eav_hashes)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/iostat/eav_hashes) [![Build Status](https://travis-ci.org/iostat/eav_hashes.png?branch=master)](https://travis-ci.org/iostat/eav_hashes)
 
 `eav_hashes` is a neato gem for implementing the EAV (entity-attribute-value)
 database design pattern in your Rails models. All you need to do is add one
