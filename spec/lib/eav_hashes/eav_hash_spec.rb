@@ -12,127 +12,137 @@ describe "EavHash/EavEntry" do
         p3.save!
 
         p3_pulled = Product.find_by_id(p3_id)
-        p3_pulled.tech_specs.keys.length.should == 0
+#        p3_pulled.tech_specs.keys.length.should == 0
+        expect(p3_pulled.tech_specs.keys.length).to eq(0)
+        
     end
 
     it "is able to search for all models whose hashes contain a specified key" do
-        Product.find_by_tech_specs("A String").length.should be == 2
-        Product.find_by_tech_specs(:only_in_product_2).length.should be == 1
+#        Product.find_by_tech_specs("A String").length.should be == 2
+        expect(Product.find_by_tech_specs("A String").length).to eq(2)
+
+#        Product.find_by_tech_specs(:only_in_product_2).length.should be == 1
+        expect(Product.find_by_tech_specs(:only_in_product_2).length).to eq(1)
     end
 
     describe "distinguishes between string and symbol keys" do
         it "finds a value for symbol key \":symbolic_key\" in Product 1" do
-            p1.tech_specs[:symbolic_key].should_not be_nil
+#            p1.tech_specs[:symbolic_key].should_not be_nil
+            expect(p1.tech_specs[:symbolic_key]).not_to be_nil
         end
 
         it "does not find a value for non-symbol key \"symbolic_key\" in Product 1" do
-            p1.tech_specs["symbolic_key"].should be_nil
+#            p1.tech_specs["symbolic_key"].should be_nil
+            expect(p1.tech_specs["symbolic_key"]).to be_nil
         end
     end
 
     describe "preserves types between serialization and deserialization" do
         it "preserves String value types" do
-            p1.tech_specs["A String"].should be_a_kind_of String
+#            p1.tech_specs["A String"].should be_a_kind_of String
+            expect(p1.tech_specs["A String"]).to be_a_kind_of String
         end
 
         it "preserves Symbol value types" do
-            p1.tech_specs["A Symbol"].should be_a_kind_of Symbol
+#            p1.tech_specs["A Symbol"].should be_a_kind_of Symbol
+            expect(p1.tech_specs["A Symbol"]).to be_a_kind_of Symbol
         end
 
         it "preserves Integer/Bignum/Fixnum value types" do
-            p1.tech_specs["A Number"].should be_a_kind_of Integer
+#            p1.tech_specs["A Number"].should be_a_kind_of Integer
+            expect(p1.tech_specs["A Number"]).to be_a_kind_of Integer
         end
 
         it "preserves Symbol value types" do
-            p1.tech_specs["A Float"].should be_a_kind_of Float
+            expect(p1.tech_specs["A Float"]).to be_a_kind_of Float
         end
 
         it "preserves Complex value types" do
-            p1.tech_specs["A Complex"].should be_a_kind_of Complex
+            expect(p1.tech_specs["A Complex"]).to be_a_kind_of Complex
         end
 
         it "preserves Rational value types" do
-            p1.tech_specs["A Rational"].should be_a_kind_of Rational
+            expect(p1.tech_specs["A Rational"]).to be_a_kind_of Rational
         end
 
         it "preserves Boolean(true) value types" do
-            p1.tech_specs["True"].should be_a_kind_of TrueClass
+            expect(p1.tech_specs["True"]).to be_a_kind_of TrueClass
         end
 
         it "preserves Boolean(false) value types" do
-            p1.tech_specs["False"].should be_a_kind_of FalseClass
+            expect(p1.tech_specs["False"]).to be_a_kind_of FalseClass
         end
 
         it "preserves Array value types" do
-            p1.tech_specs["An Array"].should be_a_kind_of Array
+            expect(p1.tech_specs["An Array"]).to be_a_kind_of Array
         end
 
         it "preserves Hash value types" do
-            p1.tech_specs["A Hash"].should be_a_kind_of Hash
+            expect(p1.tech_specs["A Hash"]).to be_a_kind_of Hash
         end
 
         it "preserves user-defined value types" do
-            p1.tech_specs["An Object"].should be_a_kind_of CustomTestObject
+            expect(p1.tech_specs["An Object"]).to be_a_kind_of CustomTestObject
         end
     end
 
     describe "preserves values between serialization and deserialization" do
         it "preserves String values" do
-            p1.tech_specs["A String"].should be == "Strings are for cats!"
+            expect(p1.tech_specs["A String"]).to eq("Strings are for cats!")
         end
 
         it "preserves Symbols" do
-            p1.tech_specs["A Symbol"].should be == :symbol
+            expect(p1.tech_specs["A Symbol"]).to eq(:symbol)
         end
 
         it "preserves Integer/Bignum/Fixnum value types" do
-            p1.tech_specs["A Number"].should be == 42
+            expect(p1.tech_specs["A Number"]).to eq(42)
         end
 
         it "preserves Symbol values" do
-            p1.tech_specs["A Float"].should be == 3.141592653589793
+            expect(p1.tech_specs["A Float"]).to eq(3.141592653589793)
         end
 
         it "preserves Complex values" do
-            p1.tech_specs["A Complex"].should be == Complex("3.141592653589793+42i")
+            expect(p1.tech_specs["A Complex"]).to eq(Complex("3.141592653589793+42i"))
         end
 
         it "preserves Rational values" do
-            p1.tech_specs["A Rational"].should be == Rational(Math::PI)
+            expect(p1.tech_specs["A Rational"]).to eq(Rational(Math::PI))
         end
 
         it "preserves Boolean(true) values" do
-            p1.tech_specs["True"].should be == true
+            expect(p1.tech_specs["True"]).to eq(true)
         end
 
         it "preserves Boolean(false) values" do
-            p1.tech_specs["False"].should be == false
+            expect(p1.tech_specs["False"]).to eq(false)
         end
 
         it "preserves Array values" do
-            p1.tech_specs["An Array"].should be == ["blue", 42, :flux_capacitor]
+            expect(p1.tech_specs["An Array"]).to eq(["blue", 42, :flux_capacitor])
         end
 
         it "preserves Hash values" do
-            p1.tech_specs["A Hash"].should be == {:foo => :bar}
+            expect(p1.tech_specs["A Hash"]).to eq({:foo => :bar})
         end
 
         it "preserves user-defined values" do
-            p1.tech_specs["An Object"].test_value.should be == 42
+            expect(p1.tech_specs["An Object"].test_value).to eq(42)
         end
     end
 
     describe "cannot search by arrays, hashes, and objects" do
         it "raises an error when searched by an object" do
-            lambda { Product.find_by_tech_specs("An Object", CustomTestObject.new(42)) }.should raise_error()
+            expect(lambda { Product.find_by_tech_specs("An Object", CustomTestObject.new(42)) }).to raise_error()
         end
 
         it "raises an error when searched by a hash" do
-            lambda { Product.find_by_tech_specs("A Hash", {:foo => :bar}) }.should raise_error()
+            expect(lambda { Product.find_by_tech_specs("A Hash", {:foo => :bar}) }).to raise_error()
         end
 
         it "raises an error when searched by an array" do
-            lambda { Product.find_by_tech_specs("An Array", ["blue", 42, :flux_capacitor]) }.should raise_error()
+            expect(lambda { Product.find_by_tech_specs("An Array", ["blue", 42, :flux_capacitor]) }).to raise_error()
         end
     end
 end
