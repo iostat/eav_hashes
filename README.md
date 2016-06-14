@@ -141,6 +141,8 @@ Special Thanks!
 -
 Thanks to [Matt Kimmel](https://github.com/mattkimmel) for adding support for models contained in namespaces.
 
+Thanks to [Arpad Lukacs](https://github.com/arpadlukacs) for adding Enumerator-like behavior.
+
 I found a bug or want to contribute!
 -
 You're probably reading this from GitHub, so you know what to do. If not, the
