@@ -87,7 +87,7 @@ module ActiveRecord
 
       # Emulates Hash.each
       def each (&block)
-        as_hash.each block
+        as_hash.each &block
       end
 
       # Emulates Hash.each_pair (same as each)

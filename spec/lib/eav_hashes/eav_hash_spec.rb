@@ -145,4 +145,10 @@ describe "EavHash/EavEntry" do
             expect(lambda { Product.find_by_tech_specs("An Array", ["blue", 42, :flux_capacitor]) }).to raise_error()
         end
     end
+    
+    describe "enumerable" do
+        it "each gives an enumerator" do
+            expect(p1.tech_specs.each).to be_instance_of(Enumerator)
+        end
+    end
 end
