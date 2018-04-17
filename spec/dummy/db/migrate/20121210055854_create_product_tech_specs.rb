@@ -1,4 +1,4 @@
-class CreateProductTechSpecs < ActiveRecord::Migration
+class CreateProductTechSpecs < ActiveRecord::Migration[5.0]
   def change
     create_table :product_tech_specs do |t|
       t.references :product, :null => false
@@ -10,7 +10,6 @@ class CreateProductTechSpecs < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :product_tech_specs, :product_id
     add_index :product_tech_specs, :entry_key
   end
 end
