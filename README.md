@@ -143,6 +143,8 @@ Thanks to [Matt Kimmel](https://github.com/mattkimmel) for adding support for mo
 
 Thanks to [Arpad Lukacs](https://github.com/arpadlukacs) for adding Enumerator-like behavior.
 
+Thanks to [Christopher Bartling](https://github.com/cebartling) and [jenskdsgn] (https://github.com/jenskdsgn) for fixing deprecation warnings in Rails 5.
+
 I found a bug or want to contribute!
 -
 You're probably reading this from GitHub, so you know what to do. If not, the
