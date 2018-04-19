@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.name        = "eav_hashes"
   s.version     = ActiveRecord::EavHashes::VERSION
   s.authors     = ["Ilya Ostrovskiy"]
+  s.license     = "MIT"
   s.email       = [(["ilya","200proof.cc"].join "@")]
   s.homepage    = "https://github.com/200proof/eav_hashes"
   s.summary     = "A developer-friendly implementation of the EAV model for Ruby on Rails."
