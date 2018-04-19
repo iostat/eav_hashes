@@ -22,7 +22,7 @@ Great question! Lets dive in with a simple code example, but first lets set up t
 
 Put this in your gemfile...
 
-    gem "eav_hashes", "~> 1.0.2"
+    gem "eav_hashes", "~> 1.1.0"
 
 ...and update your bundle.
 
