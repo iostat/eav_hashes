@@ -49,6 +49,7 @@ module ActiveRecord
       # Sets the EAV row's value
       # @param [Object] val the value
       def value= (val)
+        write_attribute(:value, val)
         @value = (val.nil? ? NilPlaceholder.new : val)
       end
 
