@@ -54,7 +54,7 @@ module ActiveRecord
         # Fill in the associations and specify the table it belongs to
         klass.class_eval <<-END_EVAL
           self.table_name = "#{options[:table_name]}"
-          belongs_to :#{options[:parent_assoc_name]}
+          belongs_to :#{options[:parent_assoc_name]}, optional: true
         END_EVAL
 
         return klass
