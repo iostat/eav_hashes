@@ -49,6 +49,7 @@ module ActiveRecord
       # Sets the EAV row's value
       # @param [Object] val the value
       def value= (val)
+        value_will_change!
         @value = (val.nil? ? NilPlaceholder.new : val)
       end
 
