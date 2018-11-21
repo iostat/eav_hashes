@@ -49,7 +49,8 @@ module ActiveRecord
       # Sets the EAV row's value
       # @param [Object] val the value
       def value= (val)
-        value_will_change!
+        both_nil = (@value.nil? || @value.is_a?(ActiveRecord::EavHashes::NilPlaceholder)) && (val.nil? || val.is_a?(ActiveRecord::EavHashes::NilPlaceholder))
+        value_will_change! if @value != val && !both_nil
         @value = (val.nil? ? NilPlaceholder.new : val)
       end
 
