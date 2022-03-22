@@ -107,7 +107,7 @@ module ActiveRecord
 
         case value_type
           when SUPPORTED_TYPES[:Object] # or Hash, Array, etc.
-            @value = YAML::load @value
+            load_yaml_value
           when SUPPORTED_TYPES[:Symbol]
             @value = @value.to_sym
           when SUPPORTED_TYPES[:Integer] # or Fixnum, Bignum
@@ -122,6 +122,16 @@ module ActiveRecord
             @value = (@value == "true")
           else
             @value
+        end
+      end
+
+      if Gem::Version.new(YAML::VERSION) >= Gem::Version.new("4.0")
+        def load_yaml_value
+          @value = YAML::unsafe_load @value
+        end
+      else
+        def load_yaml_value
+          @value = YAML::load @value
         end
       end
     end
